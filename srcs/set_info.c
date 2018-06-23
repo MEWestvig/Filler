@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:15 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/06/23 18:54:31 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/06/23 19:32:09 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 			map.player = 1;
 		if (ft_strstr((const char *)*line, "p2") != NULL)
 			map.player = 2;
-		ft_putstr_fd("Player:", fd);
+		ft_putstr_fd("Player: ", fd);
 		ft_putnbr_fd(map.player, fd);
 	}
 	else if (*line[0] == 'P' && *line[1] == 'l')
@@ -57,11 +57,12 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 				i++;
 			}
 		map.map_y = my;
-		ft_putstr_fd("Map Dimensions", fd);
+		ft_putstr_fd("Map Dimensions: ", fd);
 		ft_putnbr_fd(map.map_x, fd);
+		ft_putchar_fd(' ', fd);
 		ft_putnbr_fd(map.map_y, fd);
 	}
-	else if (*line[0] == ' ' || *line[i] == '	')
+	else if (*line[0] == ' ' || *line[0] == '	')
 	{
 		return;
 	}
@@ -106,8 +107,9 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 				i++;
 			}
 		piece.piece_y = py;
-		ft_putstr_fd("Piece Dimensions", fd);
+		ft_putstr_fd("Piece Dimensions: ", fd);
 		ft_putnbr_fd(piece.piece_x, fd);
+		ft_putchar_fd(' ', fd);
 		ft_putnbr_fd(piece.piece_y, fd);
 	}
 	else if (*line[0] == '.' || *line[0] == '*')
