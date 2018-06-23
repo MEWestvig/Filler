@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:15 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/06/23 19:32:09 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/06/23 22:39:25 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 			map.player = 2;
 		ft_putstr_fd("Player: ", fd);
 		ft_putnbr_fd(map.player, fd);
+		ft_putchar_fd('\n', fd);
+		ft_putendl_fd(*line, fd);
 	}
-	else if (*line[0] == 'P' && *line[1] == 'l')
+	else if (*line[0] == 'P' && *line[1] == 'l') //Picking up an issue here, works if it's something always true.
 	{
+		ft_putendl_fd(*line, fd);
 		int mx;
 		int my;
 
