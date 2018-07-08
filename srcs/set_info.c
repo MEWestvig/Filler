@@ -6,14 +6,14 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:15 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/06/23 22:39:25 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/08 20:38:40 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 #include <stdio.h>
 
-void	set_info(char **line, t_map map, t_piece piece, int fd)
+void	set_info(char *line, t_map map, t_piece piece, int fd)
 {
 	int i;
 	int j;
@@ -26,37 +26,37 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 	piece_line = 0;
 	if (*line[0] == '$')
 	{
-		if (ft_strstr((const char *)*line, "p1") != NULL)
+		if (ft_strstr((const char *)line, "p1") != NULL)
 			map.player = 1;
-		if (ft_strstr((const char *)*line, "p2") != NULL)
+		if (ft_strstr((const char *)line, "p2") != NULL)
 			map.player = 2;
 		ft_putstr_fd("Player: ", fd);
 		ft_putnbr_fd(map.player, fd);
 		ft_putchar_fd('\n', fd);
 		ft_putendl_fd(*line, fd);
 	}
-	else if (*line[0] == 'P' && *line[1] == 'l') //Picking up an issue here, works if it's something always true.
+	else if (line[0] == 'P' && line[1] == 'l')
 	{
-		ft_putendl_fd(*line, fd);
+		ft_putendl_fd(line, fd);
 		int mx;
 		int my;
 
 		i = 0;
 		mx = 0;
 		my = 0;
-		while (!(ft_isdigit(*line[i])))
+		while (!(ft_isdigit(line[i])))
 			i++;
-		while (ft_isdigit(*line[i]))
+		while (ft_isdigit(line[i]))
 			{
-				mx = mx * 10 + (*line[i] - '0');
+				mx = mx * 10 + (line[i] - '0');
 				i++;
 			}
 		map.map_x = mx;
-		while (!(ft_isdigit(*line[i])))
+		while (!(ft_isdigit(line[i])))
 			i++;
-		while (ft_isdigit(*line[i]))
+		while (ft_isdigit(line[i]))
 			{
-				my = my * 10 + (*line[i] - '0');
+				my = my * 10 + (line[i] - '0');
 				i++;
 			}
 		map.map_y = my;
@@ -65,28 +65,35 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 		ft_putchar_fd(' ', fd);
 		ft_putnbr_fd(map.map_y, fd);
 	}
-	else if (*line[0] == ' ' || *line[0] == '	')
+	else if (line[0] == ' ' || line[0] == '	')
 	{
 		return;
 	}
-	else if (ft_isdigit(*line[0]))
+	else if (ft_isdigit(line[0]))
 	{
 		i = 0;
 		j = 0;
-		while(ft_isdigit(*line[i]))
+		while(ft_isdigit(line[i]))
 			i++;
-		while(*line[i] == ' ' || *line[i] == '	')
+		while(line[i] == ' ' || line[i] == '	')
 			i++;
-		while(*line[i])
+		map.map = (char**)malloc(sizeof(char*) * map.map_y);
+		while (line[i])
 		{
-			map.map[map_line][j] = *line[i];
+			map.map[y] = (char*)malloc(sizeof(char) * map.map_x);
+			map.map[map_line][j] = line[i]
+		}
+	}
+		while(line[i])
+		{
+			map.map[map_line][j] = line[i];
 			j++;
 			i++;
 		}
 		ft_putendl_fd(map.map[map_line], fd);
 		map_line++;
 	}
-	else if (*line[0] == 'P' && *line[1] == 'i')
+	else if (line[0] == 'P' && line[1] == 'i')
 	{
 		int px;
 		int py;
@@ -94,19 +101,19 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 		i = 0;
 		px = 0;
 		py = 0;
-		while (!(ft_isdigit(*line[i])))
+		while (!(ft_isdigit(line[i])))
 			i++;
-		while (ft_isdigit(*line[i]))
+		while (ft_isdigit(line[i]))
 			{
-				px = px * 10 + (*line[i] - '0');
+				px = px * 10 + (line[i] - '0');
 				i++;
 			}
 		piece.piece_x = px;
-		while (!(ft_isdigit(*line[i])))
+		while (!(ft_isdigit(line[i])))
 			i++;
-		while (ft_isdigit(*line[i]))
+		while (ft_isdigit(line[i]))
 			{
-				py = py * 10 + (*line[i] - '0');
+				py = py * 10 + (line[i] - '0');
 				i++;
 			}
 		piece.piece_y = py;
@@ -115,11 +122,11 @@ void	set_info(char **line, t_map map, t_piece piece, int fd)
 		ft_putchar_fd(' ', fd);
 		ft_putnbr_fd(piece.piece_y, fd);
 	}
-	else if (*line[0] == '.' || *line[0] == '*')
+	else if (line[0] == '.' || line[0] == '*')
 	{
-		while(*line[i])
+		while(line[i])
 		{
-			piece.piece[piece_line][j] = *line[i];
+			piece.piece[piece_line][j] = line[i];
 			j++;
 			i++;
 		}
