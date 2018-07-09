@@ -1,39 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   check_positions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/09 15:35:01 by mwestvig         ###   ########.fr       */
+/*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
+/*   Updated: 2018/07/09 15:54:37 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
 
-# include <fcntl.h>
-# include "../libft/includes/libft.h"
 
-typedef struct	s_map
+void	positions(t_map *map, t_piece *piece)
 {
-	int map_x;
-	int map_y;
-	char **map;
-	int player;
-	char m_p;
-	char e_p;
-}				t_map;
 
-typedef struct	s_piece
-{
-	int 	piece_x;
-	int 	piece_y;
-	char	**piece;
-	int		**pos;
-}				t_piece;
-
-void	set_info(t_map *map, t_piece *piece);
-
-#endif
+	//loop through every possible position to calculate how many possibilities
+	//malloc each 2 part number sequence
+	//save array of numbers
+}
