@@ -6,16 +6,30 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/09 15:54:37 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/09 17:00:12 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int		count_pos(t_map *map, t_piece *piece)
+{
+}
 
+void	set_positions(t_map *map, t_piece *piece)
+{
+}
 
 void	positions(t_map *map, t_piece *piece)
 {
+	int positions;
+	int i;
 
-	//loop through every possible position to calculate how many possibilities
-	//malloc each 2 part number sequence
-	//save array of numbers
+	i = 0;
+	positions = count_pos(map, piece);
+	piece->pos = (int **)malloc(sizeof(int *) * positions + 1);
+	while (i < positions)
+	{
+		piece->pos[i] = (int *)malloc(sizeof(int) * 2);
+		i++;
+	}
+	set_positions(map, piece);
 }
