@@ -1,2 +1,0 @@
-Player: 1
-$$$ exec p1 : [players/mwestvig.filler]
