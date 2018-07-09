@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/06/23 18:15:26 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/09 12:04:48 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct	s_map
 	int map_y;
 	char **map;
 	int player;
+	char m_p;
+	char e_p;
 }				t_map;
 
 typedef struct	s_piece
@@ -31,6 +33,6 @@ typedef struct	s_piece
 	char **piece;
 }				t_piece;
 
-void	set_info(char **line, t_map map, t_piece piece, int fd);
+void	set_info(t_map *map, t_piece *piece);
 
 #endif
