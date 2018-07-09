@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/09 17:00:12 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/09 17:02:19 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	set_positions(t_map *map, t_piece *piece)
 {
 }
 
-void	positions(t_map *map, t_piece *piece)
+void	check_positions(t_map *map, t_piece *piece)
 {
 	int positions;
 	int i;
