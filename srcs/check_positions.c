@@ -6,12 +6,29 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/10 11:48:08 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/10 11:52:01 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		legal_pos(t_map *map, t_piece *piece, int i, int j)
+int		legal_pos(t_map *m, t_piece *p, int i, int j)
 {
+	int count;
+	int a;
+	int b;
+
+	count = 0;
+	a = 0;
+	while (/*piece y using a*/)
+	{
+		b = 0;
+		while (/*piece x using b*/)
+		{
+		}
+	}
+	if (count == 1)
+		return (1);
+	else
+		return (0);
 }
 
 int		count_pos(t_map *map, t_piece *piece)
