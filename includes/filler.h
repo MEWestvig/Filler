@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/10 16:29:17 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/11 16:59:50 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_piece
 }				t_piece;
 
 void	set_info(t_map *map, t_piece *piece);
-void	check_positions(t_map *map, t_piece *piece);
+int		check_positions(t_map *map, t_piece *piece);
 void	ft_player(t_map *map, t_piece *piece);
 
 #endif

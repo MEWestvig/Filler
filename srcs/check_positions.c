@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/10 16:45:53 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/11 17:05:55 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,18 @@ void	set_positions(t_map *map, t_piece *piece)
 	}
 }
 
-void	check_positions(t_map *map, t_piece *piece)
+int		check_positions(t_map *map, t_piece *piece)
 {
 	int positions;
 	int i;
 
 	i = 0;
 	positions = count_pos(map, piece);
+	if (positions == 0)
+	{
+		ft_putendl_fd("0 0", 1);
+		return (1);
+	}
 	piece->pos = (int **)malloc(sizeof(int *) * positions);
 	while (i < positions)
 	{
@@ -98,4 +103,5 @@ void	check_positions(t_map *map, t_piece *piece)
 		i++;
 	}
 	set_positions(map, piece);
+	return (0);
 }
