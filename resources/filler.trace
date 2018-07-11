@@ -1,2 +1,3 @@
-seed = 9938
+seed = 8728
 O: error on input
+players/mwestvig.filler: Segfault at 51

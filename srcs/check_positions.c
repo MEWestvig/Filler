@@ -6,9 +6,11 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/10 11:52:01 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/10 16:45:53 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/filler.h"
 
 int		legal_pos(t_map *m, t_piece *p, int i, int j)
 {
@@ -18,12 +20,20 @@ int		legal_pos(t_map *m, t_piece *p, int i, int j)
 
 	count = 0;
 	a = 0;
-	while (/*piece y using a*/)
+	while (a < p->piece_y)
 	{
 		b = 0;
-		while (/*piece x using b*/)
+		while (b < p->piece_x)
 		{
+			if (p->piece[a][b] == '*' && (a + i >= m->map_y || b + j >= m->map_x))
+				return (0);
+			if (p->piece[a][b] == '*' && ft_toupper(m->map[i + a][j + b]) == m->m_p)
+				count++;
+			if (p->piece[a][b] == '*' && ft_toupper(m->map[i + a][j + b]) == m->e_p)
+				return (0);
+			b++;
 		}
+		a++;
 	}
 	if (count == 1)
 		return (1);
@@ -38,17 +48,40 @@ int		count_pos(t_map *map, t_piece *piece)
 	int j;
 
 	num_pos = 0;
-	i = 0;
-	j = 0;
-	while (i++ < map->map_y)
-		while (j++ < map->map_x)
+	i = -1;
+	while (++i < map->map_y)
+	{
+		j = -1;
+		while (++j < map->map_x)
 			if (legal_pos(map, piece, i, j))
 				num_pos++;
+	}
 	return (num_pos);
 }
 
 void	set_positions(t_map *map, t_piece *piece)
 {
+	int i;
+	int j;
+	int a;
+
+	i = 0;
+	a = 0;
+	while (i < map->map_y)
+	{
+		j = 0;
+		while (j < map->map_x)
+		{
+			if (legal_pos(map, piece, i, j))
+			{
+				piece->pos[a][0] = i;
+				piece->pos[a][1] = j;
+				a++;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 void	check_positions(t_map *map, t_piece *piece)
@@ -58,7 +91,7 @@ void	check_positions(t_map *map, t_piece *piece)
 
 	i = 0;
 	positions = count_pos(map, piece);
-	piece->pos = (int **)malloc(sizeof(int *) * positions + 1);
+	piece->pos = (int **)malloc(sizeof(int *) * positions);
 	while (i < positions)
 	{
 		piece->pos[i] = (int *)malloc(sizeof(int) * 2);

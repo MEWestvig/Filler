@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:15 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/09 12:06:17 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/11 12:31:01 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@
 void	ft_player(t_map *map, t_piece *piece)
 {
 	char	*line;
+	char	*p;
 	int		player;
 
 	get_next_line(0, &line);
-	player = ft_atoi(ft_strchr(line, 'p'));
+	p = ft_strchr(line, 'p');
+	p++;
+	player = ft_atoi(p);
 	if (player == 1)
 	{
 		map->m_p = 'O';
@@ -123,7 +126,7 @@ void	ft_piece(t_piece *piece)
 	{
 		get_next_line(0, &line);
 		piece->piece[piece_line] = (char *)malloc(sizeof(char) * piece->piece_x + 1);
-		piece->piece[piece_line] = ft_strdup((char const *)&line[4]);
+		piece->piece[piece_line] = ft_strdup((char const *)line);
 		ft_strdel(&line);
 		piece_line++;
 	}
@@ -131,7 +134,6 @@ void	ft_piece(t_piece *piece)
 
 void	set_info(t_map *map, t_piece *piece)
 {
-	ft_player(map, piece);
 	ft_map(map);
 	ft_piece(piece);
 }
