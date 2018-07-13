@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/11 17:05:55 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/13 12:52:31 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,26 @@ int		legal_pos(t_map *m, t_piece *p, int i, int j)
 	int b;
 
 	count = 0;
-	a = 0;
-	while (a < p->piece_y)
+	a = -1;
+	while (++a < p->piece_y)
 	{
-		b = 0;
-		while (b < p->piece_x)
+		b = -1;
+		while (++b < p->piece_x)
 		{
-			if (p->piece[a][b] == '*' && (a + i >= m->map_y || b + j >= m->map_x))
-				return (0);
-			if (p->piece[a][b] == '*' && ft_toupper(m->map[i + a][j + b]) == m->m_p)
-				count++;
-			if (p->piece[a][b] == '*' && ft_toupper(m->map[i + a][j + b]) == m->e_p)
-				return (0);
-			b++;
+			if (p->piece[a][b] == '*')
+				if (a + i >= m->map_y || b + j >= m->map_x)
+					return (0);
+			if (p->piece[a][b] == '*')
+				if (ft_toupper(m->map[i + a][j + b]) == m->m_p)
+					count++;
+			if (p->piece[a][b] == '*')
+				if (ft_toupper(m->map[i + a][j + b]) == m->e_p)
+					return (0);
 		}
-		a++;
 	}
 	if (count == 1)
 		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 int		count_pos(t_map *map, t_piece *piece)

@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:15 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/11 12:31:01 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/13 12:30:32 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ void	ft_mapsize(t_map *map, char *line)
 	i = 0;
 	while (!(ft_isdigit(line[i])))
 		i++;
-	while(ft_isdigit(line[i]))
+	while (ft_isdigit(line[i]))
 	{
 		y = (y * 10) + (line[i] - '0');
 		i++;
 	}
 	while (!(ft_isdigit(line[i])))
 		i++;
-	while(ft_isdigit(line[i]))
+	while (ft_isdigit(line[i]))
 	{
 		x = (x * 10) + (line[i] - '0');
 		i++;
@@ -96,14 +96,14 @@ void	ft_piecesize(t_piece *piece, char *line)
 	i = 0;
 	while (!(ft_isdigit(line[i])))
 		i++;
-	while(ft_isdigit(line[i]))
+	while (ft_isdigit(line[i]))
 	{
 		y = (y * 10) + (line[i] - '0');
 		i++;
 	}
 	while (!(ft_isdigit(line[i])))
 		i++;
-	while(ft_isdigit(line[i]))
+	while (ft_isdigit(line[i]))
 	{
 		x = (x * 10) + (line[i] - '0');
 		i++;
@@ -112,28 +112,22 @@ void	ft_piecesize(t_piece *piece, char *line)
 	piece->piece_y = y;
 }
 
-void	ft_piece(t_piece *piece)
+void	ft_piece(t_piece *p)
 {
 	char	*line;
 	int		piece_line;
 
 	get_next_line(0, &line);
-	ft_piecesize(piece, line);
+	ft_piecesize(p, line);
 	ft_strdel(&line);
-	piece->piece = (char **)malloc(sizeof(char *) * piece->piece_y + 1);
+	p->piece = (char **)malloc(sizeof(char *) * p->piece_y + 1);
 	piece_line = 0;
-	while (piece_line < piece->piece_y)
+	while (piece_line < p->piece_y)
 	{
 		get_next_line(0, &line);
-		piece->piece[piece_line] = (char *)malloc(sizeof(char) * piece->piece_x + 1);
-		piece->piece[piece_line] = ft_strdup((char const *)line);
+		p->piece[piece_line] = (char *)malloc(sizeof(char) * p->piece_x + 1);
+		p->piece[piece_line] = ft_strdup((char const *)line);
 		ft_strdel(&line);
 		piece_line++;
 	}
-}
-
-void	set_info(t_map *map, t_piece *piece)
-{
-	ft_map(map);
-	ft_piece(piece);
 }
