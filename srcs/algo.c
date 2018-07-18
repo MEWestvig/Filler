@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/18 11:12:53 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/18 13:09:24 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,28 @@ int		distance(int ex, int ey, int mx, int my)
 
 int		shortest_dist(t_map *m, *t_piece *p, int i)
 {
+	int a;
+	int b;
 	int shortest;
+	int dist;
 
-	while (/*map*/)
-		//check distance for each enemy piece against p->piece[i]
+	a = 0;
+	shortest = 2147483647
+	while (a < m->map_y)
+	{
+		b = 0;
+		while (b < m->map_x)
+		{
+			if (ft_toupper(m->map[a][b]) == m->e_p)
+			{
+				dist = distance(b, a, p->pos[i][1], p->pos[i][0])
+				if (dist < shortest)
+					shortest = dist;
+			}
+			b++;
+		}
+		a++;
+	}
 	return (shortest);
 }
 

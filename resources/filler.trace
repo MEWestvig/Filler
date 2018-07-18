@@ -1,4 +1,6 @@
-seed = 8988
+seed = 418
+O: error on input
+players/mwestvig.filler: Segfault at 0
 players/abanlin.filler won
 Score:
-43AGAINST103
+0AGAINST1
