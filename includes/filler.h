@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/13 12:42:35 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/18 10:53:00 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct	s_piece
 	int		piece_y;
 	char	**piece;
 	int		**pos;
+	int		*place;
+	int		num_pos;
 }				t_piece;
 
 int				check_positions(t_map *map, t_piece *piece);

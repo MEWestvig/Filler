@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 15:39:55 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/13 12:52:31 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/18 10:54:18 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,19 @@ void	set_positions(t_map *map, t_piece *piece)
 
 int		check_positions(t_map *map, t_piece *piece)
 {
-	int positions;
 	int i;
 
 	i = 0;
-	positions = count_pos(map, piece);
-	if (positions == 0)
+	piece->num_pos = count_pos(map, piece);
+	if (piece->num_pos == 0)
 	{
 		ft_putendl_fd("0 0", 1);
 		return (1);
 	}
-	piece->pos = (int **)malloc(sizeof(int *) * positions);
-	while (i < positions)
+	piece->pos = (int **)malloc(sizeof(int *) * piece->num_pos);
+	while (i < piece->num_pos)
 	{
-		piece->pos[i] = (int *)malloc(sizeof(int) * 2);
+		piece->pos[i] = (int *)malloc(sizeof(int) * 3);
 		i++;
 	}
 	set_positions(map, piece);

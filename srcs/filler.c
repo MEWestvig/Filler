@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 11:34:39 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/13 12:47:16 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/13 16:29:07 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	initiate(t_map *map, t_piece *piece)
 
 void	ft_print(t_piece *piece)
 {
-	ft_putnbr_fd(piece->pos[0][0], 1);
+	ft_putnbr_fd(piece->place[0], 1);
 	ft_putchar_fd(' ', 1);
-	ft_putnbr_fd(piece->pos[0][1], 1);
+	ft_putnbr_fd(piece->place[1], 1);
 	ft_putchar_fd('\n', 1);
 }
 
