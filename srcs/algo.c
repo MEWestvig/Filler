@@ -6,13 +6,13 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/18 11:04:04 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/18 11:12:53 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-int	distance(int ex, int ey, int mx, int my)
+int		distance(int ex, int ey, int mx, int my)
 {
 	int sq_diff_x;
 	int sq_diff_y;
@@ -24,7 +24,7 @@ int	distance(int ex, int ey, int mx, int my)
 	return (dist);
 }
 
-int shortest_dist(t_map *m, *t_piece *p, int i)
+int		shortest_dist(t_map *m, *t_piece *p, int i)
 {
 	int shortest;
 
@@ -33,7 +33,7 @@ int shortest_dist(t_map *m, *t_piece *p, int i)
 	return (shortest);
 }
 
-int	algo(t_map *m, t_piece *p)
+void	algo(t_map *m, t_piece *p)
 {
 	int i;
 	int j;
@@ -52,5 +52,6 @@ int	algo(t_map *m, t_piece *p)
 			j = i;
 		i++;
 	}
-	return (j);
+	p->place[0] = p->pos[j][0];
+	p->place[1] = p->pos[j][1];
 }
