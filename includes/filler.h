@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/19 19:38:05 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/20 11:29:00 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void			ft_player(t_map *map, t_piece *piece);
 void			ft_map(t_map *map);
 void			ft_piece(t_piece *piece);
 void			algo(t_map *m, t_piece *p);
+void			free_map(t_map *m);
+void			free_piece(t_piece *p);
 
 #endif
