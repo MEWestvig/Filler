@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 11:34:39 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/18 11:09:35 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/19 21:13:38 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		main(void)
 		ft_piece(piece);
 		if (check_positions(map, piece))
 			break ;
+		algo(map, piece);
 		ft_print(piece);
 	}
 	free(map);
