@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/19 19:49:30 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/20 12:57:13 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		distance(int ex, int ey, int mx, int my)
 	return (dist);
 }
 
-int		shortest_dist(t_map *m, t_piece *p, int i)
+int		shortest_dist(t_map *m, t_piece *p, int i, int pl1, int pl2)
 {
 	int a;
 	int b;
@@ -40,7 +40,7 @@ int		shortest_dist(t_map *m, t_piece *p, int i)
 		{
 			if (ft_toupper(m->map[a][b]) == m->e_p)
 			{
-				dist = distance(b, a, p->pos[i][1], p->pos[i][0]);
+				dist = distance(b, a, p->pos[i][pl1], p->pos[i][pl2]);
 				if (dist < shortest)
 					shortest = dist;
 			}
@@ -51,16 +51,55 @@ int		shortest_dist(t_map *m, t_piece *p, int i)
 	return (shortest);
 }
 
-void	algo(t_map *m, t_piece *p)
+int		above_below(t_map *m)
 {
 	int i;
 	int j;
 
+	i = 0;
+	while (i < m->map_y)
+	{
+		j = 0;
+		while (j < m->map_x)
+		{
+			if (ft_toupper(m->map[i][j]) == m->m_p)
+				return (1);
+			if (ft_toupper(m->map[i][j]) == m->e_p)
+				return (0); 
+			j++;
+		}
+		i++;
+	}
+	return (5);
+}
+
+void	algo(t_map *m, t_piece *p)
+{
+	int i;
+	int j;
+	int pl1;
+	int pl2;
+
 	p->place = (int *)malloc(sizeof(int) * 2);
 	i = 0;
+	if (above_below(m) == 1)
+	{
+		pl1 = 0;
+		pl2 = 1;
+	}
+	else if (above_below(m) == 0)
+	{
+		pl1 = 3;
+		pl2 = 4;
+	}
+	else
+	{
+		fprintf(stderr, "Get your shit together");
+		fflush(stderr);
+	}	
 	while (i < p->num_pos)
 	{
-		p->pos[i][2] = shortest_dist(m, p, i);
+		p->pos[i][2] = shortest_dist(m, p, i, pl1, pl2);
 		i++;
 	}
 	i = 0;
