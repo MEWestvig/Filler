@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 11:34:39 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/20 11:29:56 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/25 12:52:42 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	initiate(t_map *map, t_piece *piece)
 	map->map_y = 0;
 	map->map = NULL;
 	map->player = 0;
+	map->up_left = 1;
 	piece->piece_x = 0;
 	piece->piece_y = 0;
 	piece->piece = NULL;

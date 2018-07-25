@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/20 13:01:29 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/25 11:31:44 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void	algo(t_map *m, t_piece *p)
 
 	p->place = (int *)malloc(sizeof(int) * 2);
 	i = 0;
+	if (m->map_x * m->map_y <= 960)
+	{
+		minialgo(m, p);
+		return ;
+	}
 	if (above_below(m) == 1)
 	{
 		pl1 = 0;
@@ -92,11 +97,6 @@ void	algo(t_map *m, t_piece *p)
 		pl1 = 3;
 		pl2 = 4;
 	}
-	else
-	{
-		fprintf(stderr, "Get your shit together");
-		fflush(stderr);
-	}	
 	while (i < p->num_pos)
 	{
 		p->pos[i][2] = shortest_dist(m, p, i, pl1, pl2);
