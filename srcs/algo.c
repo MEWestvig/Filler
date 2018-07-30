@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/29 13:07:43 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/30 14:16:39 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,13 @@ int		above_below(t_map *m)
 		j = 0;
 		while (j < m->map_x)
 		{
-			if (ft_toupper(m->map[i][j]) == m->m_p)
-				return (1);
-			if (ft_toupper(m->map[i][j]) == m->e_p)
+			if (ft_toupper(m->map[i][j]) == m->e_p && m->map_x > 40)
 				return (0); 
 			j++;
 		}
 		i++;
 	}
-	return (5);
+	return (1);
 }
 
 void	algo(t_map *m, t_piece *p)
