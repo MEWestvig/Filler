@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/26 11:48:12 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/29 13:07:43 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	algo(t_map *m, t_piece *p)
 
 	p->place = (int *)malloc(sizeof(int) * 2);
 	i = 0;
-	if (m->map_x * m->map_y <= 960)
+	if (m->map_x * m->map_y <= 960 && m->mini == 1 && m->player == 2)
 	{
 		minialgo(m, p);
 		return ;

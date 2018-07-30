@@ -6,9 +6,11 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:25:54 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/26 11:56:00 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/26 17:54:07 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/filler.h"
 
 int		check_top(t_map *m)
 {
@@ -52,18 +54,48 @@ int		check_left(t_map *m)
 
 void	minialgo(t_map *m, t_piece *p)
 {
-	//if map00 (less than 260) go left and then to top corner.
-	//prioritise getting to the left side and then start aiming for 0,0
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
 	if (!check_left(m))
 	{
-		//move towards left
+		while (i < p->num_pos)
+		{
+			p->pos[i][2] = distance((m->map_x - 1), 0, p->pos[i][0], p->pos[i][1]);
+			i++;
+		}
+		i = 0;
+		while (i < p->num_pos)
+		{
+			if (p->pos[i][2] < p->pos[j][2])
+				j = i;
+			i++;
+		}
+		p->place[0] = p->pos[j][0];
+		p->place[1] = p->pos[j][1];
 	}
 	else if (!check_top(m))
 	{
-		//move towards 0,0
+		while (i < p->num_pos)
+		{
+			p->pos[i][2] = distance(0, 0, p->pos[i][0], p->pos[i][1]);
+			i++;
+		}
+		i = 0;
+		while (i < p->num_pos)
+		{
+			if (p->pos[i][2] < p->pos[j][2])
+				j = i;
+			i++;
+		}
+		p->place[0] = p->pos[j][0];
+		p->place[1] = p->pos[j][1];
 	}
 	else
 	{
-		//move towards the enemy.
+		m->mini = 0;
+		algo(m, p);
 	}
 }

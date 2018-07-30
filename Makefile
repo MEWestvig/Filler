@@ -6,7 +6,7 @@
 #    By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/15 10:52:28 by mwestvig          #+#    #+#              #
-#    Updated: 2018/07/20 11:28:22 by mwestvig         ###   ########.fr        #
+#    Updated: 2018/07/26 17:55:42 by mwestvig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS = srcs/filler.c \
 	   srcs/check_positions.c \
 	   srcs/algo.c \
 	   srcs/freeing.c \
+	   srcs/minialgo.c
 
 OBJ = $(SRCS:.c=.o)
 
