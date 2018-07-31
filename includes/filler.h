@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/26 17:55:26 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/31 17:46:05 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void			algo(t_map *m, t_piece *p);
 void			free_map(t_map *m);
 void			free_piece(t_piece *p);
 void			minialgo(t_map *m, t_piece *p);
-int				distance(int ex, int ey, int mx, int my);
+int				dst(int ex, int ey, int mx, int my);
 
 #endif
