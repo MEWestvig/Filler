@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/30 14:16:39 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/31 13:27:55 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,21 @@ int		above_below(t_map *m)
 	return (1);
 }
 
-void	algo(t_map *m, t_piece *p)
+int		decide(t_map *m, t_piece *p)
 {
 	int i;
-	int j;
 	int pl1;
 	int pl2;
 
-	p->place = (int *)malloc(sizeof(int) * 2);
 	i = 0;
+	pl1 = 0;
+	pl2 = 1;
 	if (m->map_x * m->map_y <= 960 && m->mini == 1 && m->player == 2)
 	{
 		minialgo(m, p);
 		return ;
 	}
-	if (above_below(m) == 1)
-	{
-		pl1 = 0;
-		pl2 = 1;
-	}
-	else if (above_below(m) == 0)
+	if (above_below(m) == 0)
 	{
 		pl1 = 3;
 		pl2 = 4;
@@ -100,6 +95,17 @@ void	algo(t_map *m, t_piece *p)
 		p->pos[i][2] = shortest_dist(m, p, i, pl1, pl2);
 		i++;
 	}
+}
+
+void	algo(t_map *m, t_piece *p)
+{
+	int i;
+	int j;
+	int pl1;
+	int pl2;
+
+	p->place = (int *)malloc(sizeof(int) * 2);
+	//if decide is 1 done mini, if decide is 0, do normal.
 	i = 0;
 	j = 0;
 	while (i < p->num_pos)

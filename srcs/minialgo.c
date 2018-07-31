@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:25:54 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/26 17:54:07 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/31 11:44:00 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,26 @@ int		check_left(t_map *m)
 		}
 		i++;
 	} 
+	return (0);
+}
+
+int		check_right(t_map *m)
+{
+	int i;
+	int j;
+
+	i = m->map_x - 2;
+	while (i < m->map_x)
+	{
+		j = 0;
+		while (j < m->map_y)
+		{
+			if (ft_toupper(m->map[j][i]) == m->m_p)
+				return (1);
+			j++;
+		}
+		i++;
+	}
 	return (0);
 }
 
