@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 11:34:39 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/31 17:52:18 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/01 00:35:00 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		main(void)
 	piece = (t_piece *)malloc(sizeof(*piece));
 	initiate(map, piece);
 	ft_player(map, piece);
+	ft_putstr_fd("\e[1;1H\e[5J", 2);
 	while (1)
 	{
 		ft_map(map);
@@ -50,6 +51,7 @@ int		main(void)
 			break ;
 		algo(map, piece);
 		ft_print(piece);
+		visual(map);
 		free_map(map);
 		free_piece(piece);
 	}

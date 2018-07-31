@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/31 17:52:54 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/31 22:38:11 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	algo(t_map *m, t_piece *p)
 	pl[0] = 0;
 	i = -1;
 	j = 0;
-	if (m->map_x * m->map_y <= 960 && m->mini == 1 && m->player == 2)
+	if (m->map_x <= 40 && m->mini == 1 && m->player == 2)
 		minialgo(m, p);
 	else
 	{

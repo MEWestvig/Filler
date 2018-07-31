@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 13:25:54 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/31 17:48:10 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/31 22:57:01 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	left_algo(t_piece *p, t_map *m)
 	i = 0;
 	while (i < p->num_pos)
 	{
-		p->pos[i][2] = dst((m->map_x - 1), 0, p->pos[i][0], p->pos[i][1]);
+		p->pos[i][2] = dst(0, m->map_y, p->pos[i][0], p->pos[i][1]);
 		i++;
 	}
 	i = 0;
@@ -100,13 +100,20 @@ void	left_algo(t_piece *p, t_map *m)
 
 void	minialgo(t_map *m, t_piece *p)
 {
-	if (!check_left(m))
-		left_algo(p, m);
-	else if (!check_top(m))
-		top_algo(p);
-	else
+	if (m->map_x <= 20)
 	{
-		m->mini = 0;
-		algo(m, p);
+		if (!check_top(m))
+			left_algo(p, m);
+		else
+			m->mini = 0;
 	}
+	else if (m->map_x <= 40)
+	{
+		if (!check_top(m))
+			top_algo(p);
+		else
+			m->mini = 0;
+	}
+	if (m->mini == 0)
+		algo(m, p);
 }

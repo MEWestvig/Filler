@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/14 17:06:07 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/31 17:46:05 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/01 00:28:40 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <fcntl.h>
 # include "../libft/includes/libft.h"
+# include <sys/ioctl.h>
 
 typedef struct	s_map
 {
@@ -46,5 +47,6 @@ void			free_map(t_map *m);
 void			free_piece(t_piece *p);
 void			minialgo(t_map *m, t_piece *p);
 int				dst(int ex, int ey, int mx, int my);
+void			visual(t_map *m);
 
 #endif

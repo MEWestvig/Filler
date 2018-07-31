@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 13:03:15 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/13 16:29:45 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/01 00:45:27 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ void	ft_player(t_map *map, t_piece *piece)
 	player = ft_atoi(p);
 	if (player == 1)
 	{
+		map->player = 1;
 		map->m_p = 'O';
 		map->e_p = 'X';
 	}
 	else if (player == 2)
 	{
+		map->player = 2;
 		map->m_p = 'X';
 		map->e_p = 'O';
 	}
