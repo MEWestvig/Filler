@@ -6,7 +6,7 @@
 /*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 16:30:26 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/30 14:16:39 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/07/31 13:39:07 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,14 @@ void	algo(t_map *m, t_piece *p)
 	j = 0;
 	while (i < p->num_pos)
 	{
+		fprintf(stderr, "i - %d j - %d\n", p->pos[i][2], p->pos[j][2]);
+		fflush(stderr);
 		if (p->pos[i][2] < p->pos[j][2])
 			j = i;
 		i++;
 	}
+	fprintf(stderr, "%d %d\n", p->pos[j][0], p->pos[j][1]);
+	fflush(stderr);
 	p->place[0] = p->pos[j][0];
 	p->place[1] = p->pos[j][1];
 }
