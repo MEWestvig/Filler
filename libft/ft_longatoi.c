@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_longatoi.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mwestvig <m.westvig@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/17 13:48:11 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/08/21 15:21:18 by mwestvig         ###   ########.fr       */
+/*   Created: 2018/08/21 15:31:38 by mwestvig          #+#    #+#             */
+/*   Updated: 2018/08/21 15:36:16 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+long int	ft_longatoi(const char *str)
 {
-	int	res;
-	int	i;
-	int	sign;
+	long int	res;
+	int			i;
+	long int	sign;
 
 	i = 0;
 	res = 0;
@@ -37,5 +37,5 @@ int			ft_atoi(const char *str)
 		res = (res * 10) + (str[i] - '0');
 		i++;
 	}
-	return ((int)res * sign);
+	return (res * sign);
 }

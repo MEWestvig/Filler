@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 14:20:51 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/06/18 12:54:39 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/08/21 15:33:00 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # ifndef IS_SPACE
 #  define IS_SPACE(x) (x <= 32)
 # endif
+
+# define MAXINT 2147483647
 
 # define BUFF_SIZE 32
 
@@ -92,5 +94,6 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int				ft_countwords(char const *str, char c);
 int				get_next_line(const int fd, char **line);
+long int		ft_longatoi(const char *str);
 
 #endif

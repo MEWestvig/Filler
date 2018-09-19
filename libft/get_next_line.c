@@ -6,7 +6,7 @@
 /*   By: mwestvig <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 15:42:21 by mwestvig          #+#    #+#             */
-/*   Updated: 2018/07/11 12:25:50 by mwestvig         ###   ########.fr       */
+/*   Updated: 2018/09/06 12:02:29 by mwestvig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ int			get_next_line(const int fd, char **line)
 {
 	static char		buff[1000][BUFF_SIZE + 1];
 	int				buff_count;
+	int				i;
 
+	i = 0;
 	if ((fd < 0 || line == ((void*)0) || read(fd, buff, 0) < 0))
 		return (-1);
 	if (!(*line = (char *)malloc(52000)))
@@ -56,5 +58,6 @@ int			get_next_line(const int fd, char **line)
 		return (-1);
 	if (gnl((char*)(buff[fd]), &*line, &buff_count, fd))
 		return (1);
+	free(*line);
 	return (buff_count);
 }
